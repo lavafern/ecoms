@@ -11,6 +11,7 @@ import { WrongPasswordException } from 'src/exceptions/wrongPasswordException';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces/jwtPayload';
 import { LoginResponse } from './interfaces/loginResponse';
+import configuraion from 'config/configuraion';
 
 @Injectable()
 export class AuthService {
@@ -63,7 +64,7 @@ export class AuthService {
                     },
                     userRole: {
                         create : {
-                            roleUid: "f4e87713-84a9-4e66-809c-42c1ac12bb9d"
+                            roleUid: configuraion.userUid
                         }
                     }
                 }
