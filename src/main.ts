@@ -12,6 +12,12 @@ async function bootstrap() {
     // type: VersioningType.URI,
     // defaultVersion: [ '1']
   // })
+  app.enableCors({
+    credentials: true,
+    origin: ['http://localhost:8080'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  })
   app.useGlobalPipes(new ValidationPipe())
   app.setGlobalPrefix('api/v1')
   app.use(cookieParser())
