@@ -83,8 +83,6 @@ export class AuthService {
             if (err instanceof(PrismaClientKnownRequestError) && err.code=='P2002') throw new ConflictException("Email already used");
             throw err;
         }
-
-
     }
 
     async login({email,password} : LoginDto) : Promise<LoginResponse> {
