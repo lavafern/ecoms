@@ -18,6 +18,7 @@ model User {
   email String  @unique
   password String
   profile Profile?
+  store Store?
   userRole UserRole?
   @@map("users")
 }
@@ -26,11 +27,22 @@ model Profile {
   uid    String     @id @default(uuid())
   name String 
   phoneNumber String @map("phone_number")
-  region String
   picture String
   user User @relation(fields: [userUid], references: [uid])
   userUid String @unique @map("user_uid")
+  userAddress UserAddress?
   @@map("profiles")
+}
+
+model UserAddress {
+      uid    String     @id @default(uuid())
+      provinsi String
+      kota String
+      kecamatan String
+      kelurahan String
+      fullAddress String @map("full_address")
+      profile Profile @relation(fields: [profileUid], references: [uid])
+      profileUid String @unique @map("profile_uid")
 }
 
 model UserRole {
@@ -50,3 +62,48 @@ model Role {
   userRole UserRole[]
   @@map("roles")
 }
+
+model Store {
+    uid    String     @id @default(uuid())
+    user User @relation(fields: [userUid], references: [uid])
+    userUid String @unique @map("user_uid")
+    storeAddress StoreAddress?
+    product Product[]
+
+}
+
+model StoreAddress {
+      uid    String     @id @default(uuid())
+      provinsi String
+      kota String
+      kecamatan String
+      kelurahan String
+      fullAddress String @map("full_address")
+      store Store @relation(fields: [storeUid], references: [uid])
+      storeUid String @unique @map("store_uid")
+}
+
+model Product {
+    uid    String     @id @default(uuid())
+    name String
+    description String
+    price Decimal
+    stock Int
+    isActive Boolean
+    store Store @relation(fields: [storeUid], references: [uid])
+    storeUid String @unique @map("store_uid")
+
+}
+
+// Description
+// Category
+// Brand
+// Images
+// Attributes
+// Rating and Reviews
+// Variants
+// Tags
+// Shipping Information
+// Discounts and Promotions
+// Related Products
+// Availability
