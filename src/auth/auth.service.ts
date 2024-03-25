@@ -44,7 +44,7 @@ export class AuthService {
         })
     }
 
-    async register({email,password,name,region}: RegisterDto) :Promise<User> {
+    async register({email,password,name, provinsi,kota,kecamatan,kelurahan,fullAddress}: RegisterDto) :Promise<User> {
 
         try {
             
@@ -57,9 +57,17 @@ export class AuthService {
                     profile: {
                         create: {
                             name,
-                            region,
                             phoneNumber: '',
-                            picture: "https://ik.imagekit.io/itspace/1703206263941_Prl5a3M8w.png?updatedAt=1703206266592"
+                            picture: "https://ik.imagekit.io/itspace/1703206263941_Prl5a3M8w.png?updatedAt=1703206266592",
+                            userAddress: {
+                                create : {
+                                    provinsi,
+                                    kota,
+                                    kecamatan,
+                                    kelurahan,
+                                    fullAddress
+                                }
+                            }
                         }
                     },
                     userRole: {

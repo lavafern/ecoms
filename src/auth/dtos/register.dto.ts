@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsDefined,  MinLength, MaxLength, IsNumberString} from "class-validator";
+import { IsEmail, IsNotEmpty, IsDefined,  MinLength, MaxLength, IsNumberString, IsString} from "class-validator";
 
 export class RegisterDto {
     @IsEmail()
@@ -22,14 +22,34 @@ export class RegisterDto {
 
     @IsDefined()
     @IsNotEmpty()
-    @MinLength(4)
-    region : string;
-
-    @IsDefined()
-    @IsNotEmpty()
     @IsNumberString()
     @MinLength(9)
     phoneNumber : string;
+
+    @IsDefined()
+    @IsNotEmpty()
+    @IsString()
+    provinsi : string
+
+    @IsDefined()
+    @IsNotEmpty()
+    @IsString()
+    kota : string
+
+    @IsDefined()
+    @IsNotEmpty()
+    @IsString()
+    kecamatan : string
+
+    @IsDefined()
+    @IsNotEmpty()
+    @IsString()
+    kelurahan : string
+    
+    @IsDefined()
+    @IsNotEmpty()
+    @IsString()
+    fullAddress : string
 
     profilePicture : string;
 
