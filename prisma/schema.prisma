@@ -43,6 +43,7 @@ model UserAddress {
       fullAddress String @map("full_address")
       profile Profile @relation(fields: [profileUid], references: [uid])
       profileUid String @unique @map("profile_uid")
+      @@map("user_address")
 }
 
 model UserRole {
@@ -65,11 +66,13 @@ model Role {
 
 model Store {
     uid    String     @id @default(uuid())
+    name String
+    description String
     user User @relation(fields: [userUid], references: [uid])
     userUid String @unique @map("user_uid")
     storeAddress StoreAddress?
     product Product[]
-
+  @@map("store")
 }
 
 model StoreAddress {
@@ -81,6 +84,8 @@ model StoreAddress {
       fullAddress String @map("full_address")
       store Store @relation(fields: [storeUid], references: [uid])
       storeUid String @unique @map("store_uid")
+
+      @@map("store_address")
 }
 
 model Product {
@@ -91,7 +96,9 @@ model Product {
     stock Int
     isActive Boolean
     store Store @relation(fields: [storeUid], references: [uid])
-    storeUid String @unique @map("store_uid")
+    storeUid String @map("store_uid")
+
+    @@map("product")
 
 }
 
