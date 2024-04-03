@@ -15,7 +15,7 @@ jobs:
         key:  ${{ secrets.PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          which npm
+          source ~/.nvm/nvm.sh
           cd ~/apps/ecoms
           npm i
           git pull origin master
