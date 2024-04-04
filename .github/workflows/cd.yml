@@ -13,9 +13,10 @@ jobs:
         username: ${{ secrets.USERNAME }}
         # password: ${{ secrets.PASSWORD }}
         key:  ${{ secrets.PRIVATE_KEY }}
-        port: 22
+        port: ${{ secrets.PORT }}
         script: |
-          cd /home/lavafern/apps/ecoms
+          source ~/.nvm/nvm.sh
+          cd ~/apps/ecoms
           npm i
           git pull origin master
           npm run build
