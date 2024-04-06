@@ -1,0 +1,22 @@
+name: continous integration
+on:
+  pull_request:
+    branches:
+      - "master"
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "${{ secrets.DB_URL }}"
+      secretToken: "secret"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: testing using jest
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18.x
+      - run: npm i
+      - run: npm run test
