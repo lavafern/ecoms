@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
 import { AuthModule } from './auth.module';
 import { UnauthorizedException } from '@nestjs/common';
-import { ValidationError } from 'class-validator';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -26,7 +25,7 @@ describe('AuthService', () => {
       
       await service.login({email,password})
     } catch (err) {
-      expect(err).toBeInstanceOf(ValidationError)
+      expect(err).toBeInstanceOf(UnauthorizedException)
     }
   })
 });
