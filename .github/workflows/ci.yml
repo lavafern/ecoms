@@ -8,8 +8,11 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: testing using jest
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v1
         with:
           node-version: 18.x
       - run: npm i
