@@ -23,4 +23,4 @@ jobs:
           npm i
           git pull origin master
           npm run build
-          npm run start
+          pm2 restart main
