@@ -1,0 +1,16 @@
+name: continous integration
+on:
+  pull_request:
+    branches:
+      - "master"
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: testing using jest
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18.x
+      - run: npm i
+      - run: npm run test

@@ -1,17 +1,17 @@
 import { ConflictException, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
-import { PrismaService } from 'src/model/prisma.service';
 import * as bcrypt from 'bcrypt';
 import { RegisterDto } from './dtos/register.dto';
 import { User } from '@prisma/client';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { LoginDto } from './dtos/login.dto';
-import { UserNotFoundException } from 'src/exceptions/userNotFoundException';
-import { UserService } from 'src/user/user.service';
-import { WrongPasswordException } from 'src/exceptions/wrongPasswordException';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces/jwtPayload';
 import { LoginResponse } from './interfaces/loginResponse';
-import configuraion from 'config/configuraion';
+import { PrismaService } from '../model/prisma.service';
+import { UserService } from '../user/user.service';
+import configuraion from '../../config/configuraion';
+import { UserNotFoundException } from '../exceptions/userNotFoundException';
+import { WrongPasswordException } from '../exceptions/wrongPasswordException';
 
 @Injectable()
 export class AuthService {
