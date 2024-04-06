@@ -7,6 +7,9 @@ jobs:
   build:
     name: Test
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "${{ secrets.DB_URL }}"
+      secretToken: "secret"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
