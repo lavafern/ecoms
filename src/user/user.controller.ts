@@ -13,7 +13,7 @@ export class UserController {
     @HttpCode(200)
     try () {
         return {
-            msg:"test ci edited"
+            msg:"test ci edited again"
         }
     }
 }
