@@ -12,5 +12,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 18.x
+      - run: cd ~/apps/ecoms
       - run: npm i
       - run: npm run test
